@@ -10,7 +10,7 @@ describe('Scenarios where authentication is a pre-requirement', () => {
 
     const noteDescription = faker.lorem.words(4)
 
-    cy.fixture("example.json").as('example')
+    cy.fixture('example.json').as('example')
     cy.createNote(noteDescription)
     cy.wait('@getNotes')
 
@@ -30,6 +30,7 @@ describe('Scenarios where authentication is a pre-requirement', () => {
     cy.fillSettingsFormAndSubmit()
 
     //cy.wait('@getNotes')
+    // eslint-disable-next-line cypress/unsafe-to-chain-command
     cy.wait('@paymentRequest').then(response => {
       expect(response.state).to.equal('Complete')
     })
@@ -44,7 +45,7 @@ describe('Scenarios where authentication is a pre-requirement', () => {
         .should('be.visible')
         .click()
     }
-    
+
     /* ==== Generated with Cypress Studio ==== */
     cy.get('.nav > :nth-child(2) > a').click()
     cy.get('#email').should('be.visible')
